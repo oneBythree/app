@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>企业查询</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" type="text/css" href="pages/etrace/mobiletrace/app/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="pages/etrace/mobiletrace/app/css/index.css">
+    <script type="text/javascript" src="pages/etrace/mobiletrace/app/lib/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="pages/etrace/mobiletrace/app/lib/vue.js"></script>
+</head>
+
+<body id="searchCtrl">
+    <div class="search-logo">
+        <img src="pages/etrace/mobiletrace/app/images/search-log.png" alt="">
+        <p>查询可追溯企业</p>
+    </div>
+    <div class="search-link">
+        <div class="body color">
+            <input type="text" placeholder="请输入企业名称或查询关键词" v-model="query">
+            <span v-on:click="searchFuc(query)">查询</span>
+        </div>
+    </div>
+    <script type="text/javascript" src="pages/etrace/mobiletrace/app/js/common.v1.js"></script>
+    <script type="text/javascript">
+    var vm = new Vue({
+        el: '#searchCtrl',
+        data: {
+            query: ''
+        },
+        methods: {
+            searchFuc: function(query) {
+                var str = encodeURI(query)
+                if (str == '') {
+                    Tip('搜索内容不能为空');
+                    return false;
+                } else {
+                    window.location.href = 'mobileTrace.do?method=toQueryResult&node_name='+query;
+                }
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

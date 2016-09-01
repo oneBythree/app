@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>搜索列表</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" type="text/css" href="pages/etrace/mobiletrace/app/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="pages/etrace/mobiletrace/app/css/index.css">
+        <link rel="stylesheet" type="text/css" href="pages/etrace/mobiletrace/app/css/loading.css">
+    <script type="text/javascript" src="pages/etrace/mobiletrace/app/lib/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="pages/etrace/mobiletrace/app/lib/vue.js"></script>
+</head>
+
+<body id="rusult">
+    <div class="search-link blank">
+        <div class="body">
+            <a href="javascript:history.go(-1);" class="back"></a>
+            <input id="input1" type="text" placeholder="请输入企业名称或查询关键词" v-model="query">
+            <span v-on:click="search(query)">查询</span>
+            <a href="javascript:;" class="del" v-on:click="clean()"></a>
+        </div>
+        
+    </div>
+    <section class="result-blank" v-if="listArray.length>0">
+       <p class="page-size">共条{{total>0?total:0}}记录</p>
+        <dl class="listitem" v-for="list in listArray  ">
+            <dt class="title">{{list.type_name==null?'暂无类型':list.type_name}}</dt>
+            <dd class="content">
+                <div class="table">
+                    <div class="cell warpper-img">
+                        <img v-if="list.type == '0001'" src="pages/etrace/mobiletrace/app/images/enterprise.png" alt="屠宰场">
+                        <img v-if="list.type == '0002'" src="pages/etrace/mobiletrace/app/images/wholesale.png" alt="屠宰场">
+                        <img v-if="list.type == '0003'" src="pages/etrace/mobiletrace/app/images/retail.png" alt="屠宰场">
+                        <img v-if="list.type == '0004'" src="pages/etrace/mobiletrace/app/images/supermarket.png" alt="超市">
+                        <img v-if="list.type == '0005'" src="pages/etrace/mobiletrace/app/images/team.png" alt="团体消费">
+                        <img v-if="list.type == '0006'" src="pages/etrace/mobiletrace/app/images/enterprise.png" alt="团体消费">
+                    </div>
+                    <div class="cell list-info">
+                        <ul>
+                            <li class="name clamp1-oveflow">{{{list.node_name | addColor}}}</li>
+                            <li class="type">可追溯品类：{{{list.goods_type_name == null?'暂无':list.goods_type_name | addColor}}}</li>
+                            <li class="address">
+                                <p class="clamp2-oveflow">{{{list.addr | addColor }}}</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </dd>
+        </dl>
+    </section>
+    <div class="nodata" v-if="!listArray.length>0">
+        <div class="icon"></div>
+        <p class="text">您搜索的内容尚未纳入到追溯体系中</p>
+    </div>
+    <div class="backtop"></div>
+     <div class="loading">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="pages/etrace/mobiletrace/app/js/common.v1.js"></script>
+    <script type="text/javascript">
+    var vm = new Vue({
+        el: "body",
+        data: {},
+        created: function() {
+            this.init();
+        },
+        methods: {
+            init: function() {
+                var self = this;
+                var node_name = decodeURI(localParam().node_name);
+                this.$set('query', node_name);
+                this.methodFuc(node_name);
+
+            },
+            search: function(str) {
+                var node_name = decodeURI(str);
+                 if (str == '') {
+                    Tip('搜索内容不能为空');
+                    return false;
+                  }else{
+                  	 this.$set('query', node_name);
+               		 window.location.href = 'mobileTrace.do?method=toQueryResult&node_name=' + node_name;
+                  }
+                
+            },
+            clean: function() { 
+                $('#input1').val('');
+            },
+            methodFuc: function(str) {
+                var self = this;
+                $.ajax({
+                    url: 'mobileTrace.do?method=mobileTraceQuery&node_name=' + str,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        self.$set('resultData', data['data']);
+                        self.$set('total', data['data']['pageList']['total']);
+                        self.$set('listArray', data['data']['pageList']['data']);
+                        self.$set('result', data['data']['result']);
+                        $('.loading').hide();
+                    },
+                     beforeSend:function(data){
+                        $('.loading').show();
+                    }
+                })
+            }
+        }
+    })
+
+    Vue.filter('addColor', function(value) {
+        var search = this.query;
+        if (!search) {
+            return value;
+        }
+        text = encodeURI(value);
+        search = encodeURI(search);
+        var regex = new RegExp(search, 'gi')
+        var result = text.replace(regex, '<span class="highlightedText">$&</span>');
+        result = decodeURI(result);
+        return result;
+    });
+
+    function backTop() {
+        $('.backtop').hide();
+        $(window).scroll(function() {
+            if ($(window).scrollTop() > 0) {
+                $('.backtop').fadeIn(400); //当滑动栏向下滑动时，按钮渐现的时间
+            } else {
+                $('.backtop').fadeOut(200); //当页面回到顶部第一屏时，按钮渐隐的时间
+            }
+        });
+        $('.backtop').click(function() {
+            $('html,body').animate({
+                scrollTop: '0px'
+            }, 200); //返回顶部所用的时间 
+        });
+    }
+    //返回顶部
+    backTop();
+    </script>
+</body>
+
+</html>
