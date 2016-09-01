@@ -24,17 +24,29 @@ div.search-link {
         padding: 2px;
         width: 100%;
         font-size: 0;
-        input[type="text"] {
+        overflow: hidden;
+        // input[type="text"] {
+        //     display: table-cell;
+        //     text-indent: .24rem;
+        //     width: 100%;
+        //     height: 100%;
+        //     font-size: .28rem;
+        // }
+        div.inputxt {
             display: table-cell;
-            text-indent: .24rem;
-            width: 100%;
             height: 100%;
-            font-size: .28rem;
+            background: #fff;
+            input[type="text"] {
+                text-indent: .24rem;
+                width: 100%;
+                height: 100%;
+                font-size: .28rem;
+            }
         }
         span {
             display: table-cell;
             vertical-align: middle;
-            width: .85rem;
+            width: 1rem;
             text-align: center;
             color: #fff;
             font-size: .28rem;
@@ -55,21 +67,25 @@ div.search-link {
         position: relative;
         padding: .2rem .3rem;
         .body {
-            border-radius: .1rem;
-            overflow: hidden;
+            span {
+                border-top-right-radius: .04rem;
+                border-bottom-right-radius: .04rem;
+                overflow: hidden;
+            }
             a.del {
                 position: absolute;
                 display: block;
-                right: 1.2rem;
+                right: 1.5rem;
                 height: .22rem;
                 width: .22rem;
                 top: .39rem;
-                background:  url(../images/del.png) center center no-repeat;
+                background: url(../images/del.png) center center no-repeat;
                 background-size: 100% 100%;
             }
-            input[type="text"] {
+            div.inputxt {
                 border-top-left-radius: .04rem;
                 border-bottom-left-radius: .04rem;
+                overflow: hidden;
             }
         }
     }
@@ -123,7 +139,7 @@ dl.listitem {
                     padding: 0 .2rem;
                     &.name {
                         font-size: .28rem;
-                        color:#7c7c7c;
+                        color: #7c7c7c;
                     }
                     &.type,
                     &.address {
@@ -157,10 +173,10 @@ dl.listitem {
 }
 
 //没数据
-div.nodata{
+div.nodata {
     margin-top: 1.8rem;
     text-align: center;
-    div.icon{
+    div.icon {
         display: inline-block;
         width: 1.14rem;
         height: 1.06rem;
@@ -168,28 +184,35 @@ div.nodata{
         background-size: 100% 100%;
         margin-bottom: .4rem;
     }
-    p.text{
+    p.text {
         font-size: .3rem;
-        color:#999;
+        color: #999;
     }
 }
-.highlightedText{color:#df392c;}
-.result-blank{
+
+.highlightedText {
+    color: #df392c;
+}
+
+.result-blank {
     padding-bottom: .1rem;
-    dl.listitem:last-of-type{
+    dl.listitem:last-of-type {
         margin-bottom: 0;
     }
 }
+
 // 返回顶部
-div.backtop{
+div.backtop {
     position: fixed;
     right: .3rem;
     bottom: .16rem;
-    width: .5rem;
-    height: .5rem;
+    width: .6rem;
+    height: .6rem;
     border-radius: 50%;
-    border:1px solid #e7e7e7;
+    border: 1px solid #e7e7e7;
     z-index: 1000;
     background: #fff url(../images/top.png) center no-repeat;
     background-size: .19rem .26rem;
 }
+
+[v-cloak] { display: none } 

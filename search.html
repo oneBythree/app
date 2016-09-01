@@ -8,10 +8,14 @@
     <meta content="black" name="apple-mobile-web-app-status-bar-style" />
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <meta name="format-detection" content="telephone=no" />
-    <link rel="stylesheet" type="text/css" href="pages/etrace/mobiletrace/app/css/reset.css">
+<!--     <link rel="stylesheet" type="text/css" href="pages/etrace/mobiletrace/app/css/reset.css">
     <link rel="stylesheet" type="text/css" href="pages/etrace/mobiletrace/app/css/index.css">
     <script type="text/javascript" src="pages/etrace/mobiletrace/app/lib/jquery-1.10.2.js"></script>
-    <script type="text/javascript" src="pages/etrace/mobiletrace/app/lib/vue.js"></script>
+    <script type="text/javascript" src="pages/etrace/mobiletrace/app/lib/vue.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script type="text/javascript" src="lib/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="lib/vue.js"></script>
 </head>
 
 <body id="searchCtrl">
@@ -21,7 +25,10 @@
     </div>
     <div class="search-link">
         <div class="body color">
-            <input type="text" placeholder="请输入企业名称或查询关键词" v-model="query">
+            <div class="inputxt">
+                <input type="text" placeholder="请输入企业名称或查询关键词" v-model="query">
+            </div>
+            
             <span v-on:click="searchFuc(query)">查询</span>
         </div>
     </div>
@@ -39,7 +46,7 @@
                     Tip('搜索内容不能为空');
                     return false;
                 } else {
-                    window.location.href = 'mobileTrace.do?method=toQueryResult&node_name='+query;
+                    window.location.href = 'mobileTrace.do?method=toQueryResult&node_name=' + query;
                 }
             }
         }
