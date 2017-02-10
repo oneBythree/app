@@ -1,0 +1,14 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/logs/logs",
+        "pages/code/code",
+        "pages/chooseLocation/chooseLocation"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#22ac38",
+        "navigationBarTitleText": "北京E追溯",
+        "navigationBarTextStyle": "#ffffff"
+    }
+}

@@ -1,0 +1,50 @@
+<!--code.wxml-->
+<view class="container code-list">
+  <block class="result">
+      <div class="warpper-result-table" id="hasResult">
+         <p class="main-title"> 您的查询{{codeTypeName}}为【<em class="link">11010805700002301772</em>】</p>
+      <div class="result-table clear">
+        <div class="icon-cell">
+          <ul class="result-ul">
+            <li class="warpper-address icon-list">
+                <image class="icon-img"  src="../images/icon-address.png" alt=""></image>
+            </li>
+            <li class="warpper-company icon-list">
+              <image class="icon-img" src="../images/icon-supplier.png" alt=""></image>
+            </li>
+            <li class="warpper-makert icon-list">
+                <image class="icon-img" src="../images/icon-supermaker.png" alt=""></image>
+            </li>
+          </ul>
+        </div>
+        <dl class="text-cell">
+          <dt class="warpper-address result-dt">
+            <p class="title">产地</p>
+            <em class="radio"></em>
+          </dt>
+          <dd class="warpper-address result-dd">
+            <p id="address" class="talks">{{result.area_origin_name}}</p>
+            <em class="radio"></em>
+          </dd>
+          <dt class="warpper-company result-dt">
+            <p id="companyType"  class="title">{{result.ws_supplier_type}}</p>
+            <em class="radio"></em>
+          </dt>
+          <dd class="warpper-company result-dd">
+            <p id="company" class="talks">{{result.ws_supplier_name}}</p>
+            <em class="radio"></em>
+          </dd>
+          <dt class="warpper-makert result-dt">
+            <p id="makertType" class="title">{{result.node_type}}</p>
+            <em class="radio"></em>
+          </dt>
+          <dd class="warpper-makert result-dd">
+            <p id="supermakert" class="talks">{{result.node_name}}</p>
+            <em class="radio"></em>
+          </dd>
+        </dl>
+    </div>
+  </div>
+    
+  </block>
+</view>

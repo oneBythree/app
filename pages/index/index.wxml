@@ -1,0 +1,13 @@
+<view class="wapper">
+	<text class="userinfo-title">Hi,{{userInfo.nickName}}</text>
+	<view class="container">
+	  <view  bindtap="bindViewCode" class="userinfo">
+	    <!-- <text class="userinfo-nickname">{{codeToast}}</text> -->
+	    <!-- <image class="userinfo-avatar" src="/images/code.png" background-size="cover"></image> -->
+	    <div class="yuan">
+	    	<span class="nei">扫描</span>
+	    </div>
+	  </view>
+	</view>
+	<text class="map" bindtap="bindViewLink">您的位置：超市发（蓝润店）</text>
+</view>

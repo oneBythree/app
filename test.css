@@ -1,0 +1,243 @@
+@charset "utf-8";
+body,
+div,
+p,
+ul,
+ol,
+dl,
+dt,
+dd,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+fieldset,
+td,
+th {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+em,
+strong,
+input,
+textarea {
+    font-family: 'Microsoft Yahei', 'SimSun', Arial, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: normal;
+}
+
+a img {
+    border: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+html {
+    cursor: none;
+}
+
+input {
+    cursor: none;
+}
+
+body {
+    font: 12px/1.5 'Microsoft Yahei', 'SimSun', sans-serif;
+    background-color: transparent;
+}
+
+.left {
+    display: inline;
+    float: left;
+}
+
+.right {
+    display: inline;
+    float: right;
+}
+
+.clear:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+.clear {
+    zoom: 1;
+}
+
+div.warpper-nodata,
+div.warpper-result-table {
+    display: none;
+    cursor: none;
+}
+
+div.warpper-result-table p.main-title {
+	display: block;
+    font-size: 24px;
+    // color: #fff;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+div.warpper-result-table p.main-title>em.link {
+    color: #fff;
+    font-size: 24px;
+}
+
+div.warpper-result-table span.icon-title {
+    padding: 10px 0;
+    display: block;
+    width: 130px;
+    font-size: 24px;
+    // color: #fff;
+    letter-spacing: 2px;
+    border-bottom: 4px solid #2f8e19;
+}
+
+div.result-table {
+    position: relative;
+    width: 800px;
+    margin: 0 auto;
+}
+
+div.icon-cell {
+    float: left;
+    width: 130px;
+    border-right: 1px solid #ccc;
+}
+
+div.icon-cell ul {
+    margin-top: 50px;
+}
+
+div.icon-cell li {
+    position: relative;
+    margin-top: 72px;
+}
+
+#barcode {
+    font-size: 24px;
+}
+
+div.icon-cell li>img {
+    width: 80px;
+    height: auto;
+}
+
+.radio {
+    position: absolute;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    top: 50%;
+    margin-top: -7px;
+    behavior: url(pages/etrace/checkmachine/css/PIE.htc);
+}
+
+.radio>img {
+    width: 100%;
+    height: 100%;
+}
+
+div.icon-cell li>em.radio {
+    right: -5px;
+}
+
+dl.text-cell em.radio {
+    left: -5px;
+}
+
+dl.text-cell {
+    padding-left: 130px;
+    vertical-align: top;
+}
+
+div.text-cell>dl {
+    vertical-align: middle;
+}
+
+dl.text-cell dd,
+dl.text-cell dt {
+    position: relative;
+    font-size: 0;
+}
+
+dl.text-cell .talks {
+    padding-left: 30px;
+    height: 80px;
+    line-height: 107px;
+    background: url(../images/talks.png) 10px no-repeat;
+    margin-right: 20px;
+    padding-bottom: 24px;
+    color: #666;
+    font-size: 18px;
+    behavior: url(ie-css3.htc);
+}
+
+dl.text-cell .title {
+    font-size: 24px;
+    color: #fff;
+    font-weight: normal;
+    padding-bottom: 14px;
+    text-indent: 30px;
+    height: 36px;
+    line-height: 52px;
+}
+
+div.warpper-nodata .icon-onfind {
+    height: 164px;
+    width: 100%;
+    background: url(../images/nofind.png) center center no-repeat;
+    margin: 136px 0 45px 0;
+}
+
+div.warpper-nodata dl {
+    text-align: center;
+    font-size: 24px;
+    color: #fff;
+}
+
+div.warpper-nodata dd {
+    text-align: left;
+    width: 340px;
+    margin: 36px auto;
+    font-size: 18px;
+    color: #fff;
+    line-height: 180%;
+}
+
+body {
+    position: relative;
+}
+
+.serv-ew {
+    position: absolute;
+    right: 50px;
+    bottom: -60px;
+    width: 160px;
+    height: auto;
+}
